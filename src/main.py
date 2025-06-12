@@ -1,4 +1,7 @@
 import string
+import sys
+import os
+import time
 
 print(r'''
    ____                        _        ____               
@@ -63,6 +66,56 @@ if sym < pasp:
 else:
     s = "."
 
+if 3 not in sug:
+    sug.append(4)
+
+
+#wordlists
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+wordlists_dir = os.path.join(script_dir, "../wordlists")
+
+wl = [
+    os.path.join(wordlists_dir, "indian-passwords.txt"),
+    os.path.join(wordlists_dir, "indian-passwords-length8-20.txt"),
+    os.path.join(wordlists_dir, "rockyou_aa"),
+    os.path.join(wordlists_dir, "rockyou_ab"),
+    os.path.join(wordlists_dir, "rockyou_ac")
+]
+
+
+# for i in tqdm(range(100000)):
+#     ...
+#     time.sleep(0.0001)
+
+# exit()
+
+
+found = False
+current_word = ""
+
+for path in wl:
+    try:
+        with open(path, "r", encoding="utf-8", errors="ignore") as file:
+            for line in file:
+                word = line.strip()
+                print(f"\rLooking in wordlists: {word[:50]:<50}", end="", flush=True)
+                if word == pas:
+                    found = True
+                    break
+        if found:
+            break
+    except FileNotFoundError:
+        continue
+
+print("\r" + " " * 70, end="\r")
+
+if found:
+    print(f"Found: {pas}")
+    sug.append(5)
+else:
+    sug.append(6)
+
 
 
 
@@ -76,7 +129,7 @@ suggestions = [
 
     #char variety
     "Lacks variety in caharacters. Try including more",
-    "Has a good variety of characters."
+    "Has a good variety of characters.",
 
     #wordlist
     "Present in a list of commonly used passwords. Consider using a more unique password.",
@@ -105,3 +158,5 @@ for ind in sug:
         print(suggestions[ind]+u+l+n+s)
     else:
         print(suggestions[ind])
+
+print()
