@@ -23,7 +23,7 @@ pasl = len(pas)
 
 if pasl < 8:
     sug.append(0)
-elif pasl >= 12:
+elif pasl <= 12:
     sug.append(1)
 elif pasl > 12:
     sug.append(2)
@@ -99,13 +99,6 @@ wl = [
 ]
 
 
-# for i in tqdm(range(100000)):
-#     ...
-#     time.sleep(0.0001)
-
-# exit()
-
-
 found = False
 current_word = ""
 
@@ -133,6 +126,35 @@ else:
 
 
 
+#brute force time est
+
+charset = 0
+if up > 0:
+    charset += 26
+if low > 0:
+    charset += 26
+if num > 0:
+    charset += 10
+if sym > 0:
+    charset += len(string.punctuation)
+
+combinations = (charset)**pasl
+gps = 11312000  
+
+sec = combinations / gps
+min = sec/60
+hr = min/60
+days = hr/24
+
+if min < 1:
+    sug.append(9)
+elif hr > 1:
+    sug.append(10)
+elif days > 370:
+    sug.append(11)
+
+# print(days, hr, min, sec)
+
 
 #suggestions
 
@@ -153,10 +175,6 @@ suggestions = [
     #wordlist
     "Present in a list of commonly used passwords. Consider using a more unique password.",
     "Not present in a list of commonly used passwords. Good choice!",
-
-    #personal info
-    "Consider avoiding personal information like names, birthdays, or addresses in your password.",
-    "No personal information found in the password. Good job!",
 
     #brute force time estimation
     "Password is weak and can be cracked in less than a minute. Consider using a stronger password.",
