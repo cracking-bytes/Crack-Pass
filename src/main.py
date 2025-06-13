@@ -70,6 +70,21 @@ if 3 not in sug:
     sug.append(4)
 
 
+
+#char position
+
+rep = False
+
+for i in range(0, pasl-2):
+    if pas[i] == pas[i+1] == pas[i+2]:
+        sug.append(5)
+        rep = True
+        break
+if not rep:
+    sug.append(6)
+
+
+
 #wordlists
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -112,9 +127,9 @@ print("\r" + " " * 70, end="\r")
 
 if found:
     print(f"Found: {pas}")
-    sug.append(5)
+    sug.append(7)
 else:
-    sug.append(6)
+    sug.append(8)
 
 
 
@@ -131,15 +146,14 @@ suggestions = [
     "Lacks variety in caharacters. Try including more",
     "Has a good variety of characters.",
 
+    #char position
+    "Try to avoid using characters in repeated positions, like 'aaaa' or '1111'.",
+    "Good character position. No repeated patterns found.",
+    
     #wordlist
     "Present in a list of commonly used passwords. Consider using a more unique password.",
     "Not present in a list of commonly used passwords. Good choice!",
 
-    #char position
-    "Try to avoid using characters in repeated positions, like 'aaaa' or '1111'.",
-    "Good character position. No repeated patterns found.",
-    "Try to avoid starting with a number or a special character. Starting with a letter is generally better.",
-    
     #personal info
     "Consider avoiding personal information like names, birthdays, or addresses in your password.",
     "No personal information found in the password. Good job!",
