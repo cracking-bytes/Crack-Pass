@@ -1,23 +1,20 @@
 
 # Crack Pass
 
-CrackPass is a powerful password strength analyzer designed for real-world scenarios. Instead of just checking for uppercase letters and symbols, CrackPass simulates brute force and wordlist attacks to estimate how easily a password could be cracked. It provides a realistic strength score, cracking time estimates, and improvement suggestions — all in a clean CLI interface.
+CrackPass is a command-line password strength analyzer that evaluates your password using real-world techniques. It estimates how long it would take to brute-force your password, checks it against common wordlists, and provides actionable suggestions to improve your password security.
+
 
 ## Features
 
-- Brute Force Simulation
+- Brute Force Attack Time Estimation
 
-- Wordlist Attack Simulation
+- Wordlist Test
 
-- Hybrid Mode (Brute + Wordlist together)
+- Character Variety Analysis
 
-- Strength Scoring
+- Repeated Character Detection
 
-- Improvement Suggestions
-
-- Command Line Interface (CLI)
-
-
+- Actionable Suggestions
 
 
 ## Run Locally
@@ -25,58 +22,62 @@ CrackPass is a powerful password strength analyzer designed for real-world scena
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/cracking-bytes/CrackPass.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd CrackPass
 ```
 
-Install dependencies
+Run the program
 
 ```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run start
+  python3 src/main.py
 ```
 
 
 ## Usage/Examples
 
-```javascript
-import Component from 'my-project'
+```text
+$ python3 src/main.py
 
-function App() {
-  return <Component />
-}
+   ____                        _        ____               
+  / ___|  _ __   __ _    ___  | | __   |  _ \   __ _   ___   ___ 
+ | |     | '__/ / _` |  / __| | |/ /   | |_) | / _` | / __/ / __|
+ | |___  | |   | (_| | | (__  |   <    |  __/ | (_| | \__ \ \__ \
+  \____| |_|    \__,_|  \___| |_|\_\   |_|     \__,_| |___/ |___/
+                                                 
+Enter the password to continue: abcd1234
+
+Summary:
+Length is okay, but you might want to increase it for better security.
+Lacks variety in characters. Try including more uppercase letters symbols.
+Good character position. No repeated patterns found.
+Password is moderate and can be cracked in a few hours. Consider strengthening it.
 ```
 
 
 ## Tech Stack
 
-**Language:** Python 3.x
+**Language:** Python 3
 
 **Libraries:**
 
-time – to measure and simulate cracking durations
+- `string` – for character set operations
 
-itertools – for brute force permutations
+- `os` – for file and path handling
 
-threading or asyncio – for hybrid cracking simulation
+- `time` – for timing and estimation
 
-argparse – to build the CLI
+- `sys` – for system-specific functions
 
 **Dev Tools:**
 
-VS Code
+- VS Code
 
-Git & GitHub for version control
+- Git & GitHub for version control
 
 
 ## License
