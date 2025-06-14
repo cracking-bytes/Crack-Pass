@@ -21,8 +21,16 @@ print(BOLD + CYAN + r'''
        
 ''' + RESET)
 
-# Enter password prompt in red
-pas = input(BOLD + RED + 'Enter the password to continue: ' + RESET)
+# Welcome message and usage tip
+print(BOLD + CYAN + "Welcome to CrackPass! Enter a password to check its strength.\n" + RESET)
+
+# Enter password prompt in red, handle empty input
+while True:
+    pas = input(BOLD + RED + 'Enter the password to continue: ' + RESET)
+    if pas.strip() == "":
+        print(RED + "Password cannot be empty. Please enter a valid password.\n" + RESET)
+    else:
+        break
 
 sug = []
 
@@ -181,23 +189,13 @@ suggestions = [
     "Password is strong and would take years to crack. Good choice!",
 ]
 
-# Final result in green
+# Summary
 print("\n" + BOLD + CYAN + "Summary:" + RESET)
 
 for ind in sug:
     if ind == 3:
-        print(YELLOW + suggestions[ind]+u+l+n+s + RESET)
-    elif ind == 7:
-        print(RED + suggestions[ind] + RESET)
-    elif ind == 8:
-        print(GREEN + suggestions[ind] + RESET)
-    elif ind in [0, 5, 9]:
-        print(RED + suggestions[ind] + RESET)
-    elif ind in [2, 4, 6, 11]:
-        print(GREEN + suggestions[ind] + RESET)
-    elif ind in [1, 10]:
-        print(YELLOW + suggestions[ind] + RESET)
+        print(suggestions[ind]+u+l+n+s)
     else:
         print(suggestions[ind])
 
-print()
+print(BOLD + CYAN + "\nThank you for using CrackPass!" + RESET)
