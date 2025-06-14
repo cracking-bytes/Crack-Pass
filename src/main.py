@@ -172,7 +172,7 @@ suggestions = [
     "Length is absolutely fine. You can use it as is.",
 
     #char variety
-    "Lacks variety in caharacters. Try including more",
+    "Lacks variety in characters. Try including more",
     "Has a good variety of characters.",
 
     #char position
