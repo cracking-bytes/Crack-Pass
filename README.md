@@ -41,21 +41,29 @@ Run the program
 ## Usage/Examples
 
 ```text
-$ python3 src/main.py
+$ python3 main.py
+ 
+   ____                        _        ____                         
+  / ___|  _ __   __ _    ___  | | __   |  _ \   __ _   ___   ___  
+ | |     | '__/ / _` |  / __| | |/ /   | |_) | / _` | / __/ / __|  
+ | |___  | |   | (_| | | (__  |   <    |  __/ | (_| | \__ \ \__ \  
+  \____| |_|    \__,_|  \___| |_|\_\   |_|     \__,_| |___/ |___/   
+       
 
-   ____                        _        ____               
-  / ___|  _ __   __ _    ___  | | __   |  _ \   __ _   ___   ___ 
- | |     | '__/ / _` |  / __| | |/ /   | |_) | / _` | / __/ / __|
- | |___  | |   | (_| | | (__  |   <    |  __/ | (_| | \__ \ \__ \
-  \____| |_|    \__,_|  \___| |_|\_\   |_|     \__,_| |___/ |___/
-                                                 
+Welcome to CrackPass! Enter a password to check its strength.
+
 Enter the password to continue: abcd1234
+Found: abcd1234                                                         
 
 Summary:
 Length is okay, but you might want to increase it for better security.
-Lacks variety in characters. Try including more uppercase letters symbols.
+Lacks variety in caharacters. Try including more uppercase letters symbols.
 Good character position. No repeated patterns found.
+Present in a list of commonly used passwords. Consider using a more unique password.
 Password is moderate and can be cracked in a few hours. Consider strengthening it.
+
+Thank you for using CrackPass!
+
 ```
 
 
