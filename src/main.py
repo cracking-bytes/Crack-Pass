@@ -3,17 +3,26 @@ import sys
 import os
 import time
 
-print(r'''
-   ____                        _        ____               
-  / ___|  _ __   __ _    ___  | | __   |  _ \   __ _   ___   ___ 
- | |     | '__/ / _` |  / __| | |/ /   | |_) | / _` | / __/ / __|
- | |___  | |   | (_| | | (__  |   <    |  __/ | (_| | \__ \ \__ \
-  \____| |_|    \__,_|  \___| |_|\_\   |_|     \__,_| |___/ |___/
-                                                 
-''')
+# ASCII color codes
+CYAN = "\033[96m"
+RED = "\033[91m"
+YELLOW = "\033[93m"
+GREEN = "\033[92m"
+BOLD = "\033[1m"
+RESET = "\033[0m"
 
+# Very bold cyan heading
+print(BOLD + CYAN + r''' 
+   ____                        _        ____                         
+  / ___|  _ __   __ _    ___  | | __   |  _ \   __ _   ___   ___  
+ | |     | '__/ / _` |  / __| | |/ /   | |_) | / _` | / __/ / __|  
+ | |___  | |   | (_| | | (__  |   <    |  __/ | (_| | \__ \ \__ \  
+  \____| |_|    \__,_|  \___| |_|\_\   |_|     \__,_| |___/ |___/   
+       
+''' + RESET)
 
-pas = input('Enter the password to continue: ')
+# Enter password prompt in red
+pas = input(BOLD + RED + 'Enter the password to continue: ' + RESET)
 
 sug = []
 
@@ -36,7 +45,6 @@ num = sum(a.isdigit() for a in pas)
 sym = sum(c in string.punctuation for c in pas)
 
 pasp = pasl//4
-
 
 if up < pasp:
     u = " uppercase letters"
@@ -69,8 +77,6 @@ else:
 if 3 not in sug:
     sug.append(4)
 
-
-
 #char position
 
 rep = False
@@ -82,8 +88,6 @@ for i in range(0, pasl-2):
         break
 if not rep:
     sug.append(6)
-
-
 
 #wordlists
 
@@ -98,16 +102,16 @@ wl = [
     os.path.join(wordlists_dir, "rockyou_ac")
 ]
 
-
 found = False
 current_word = ""
 
+# Wordlist test in yellow
 for path in wl:
     try:
         with open(path, "r", encoding="utf-8", errors="ignore") as file:
             for line in file:
                 word = line.strip()
-                print(f"\rLooking in wordlists: {word[:50]:<50}", end="", flush=True)
+                print(f"\r{YELLOW}Looking in wordlists: {word[:50]:<50}{RESET}", end="", flush=True)
                 if word == pas:
                     found = True
                     break
@@ -119,12 +123,10 @@ for path in wl:
 print("\r" + " " * 70, end="\r")
 
 if found:
-    print(f"Found: {pas}")
+    print(RED + f"Found: {pas}" + RESET)
     sug.append(7)
 else:
     sug.append(8)
-
-
 
 #brute force time est
 
@@ -153,9 +155,6 @@ elif hr > 1:
 elif days > 370:
     sug.append(11)
 
-# print(days, hr, min, sec)
-
-
 #suggestions
 
 suggestions = [
@@ -180,14 +179,24 @@ suggestions = [
     "Password is weak and can be cracked in less than a minute. Consider using a stronger password.",
     "Password is moderate and can be cracked in a few hours. Consider strengthening it.",
     "Password is strong and would take years to crack. Good choice!",
-
 ]
 
-print("\nSummary:")
+# Final result in green
+print("\n" + BOLD + CYAN + "Summary:" + RESET)
 
 for ind in sug:
     if ind == 3:
-        print(suggestions[ind]+u+l+n+s)
+        print(YELLOW + suggestions[ind]+u+l+n+s + RESET)
+    elif ind == 7:
+        print(RED + suggestions[ind] + RESET)
+    elif ind == 8:
+        print(GREEN + suggestions[ind] + RESET)
+    elif ind in [0, 5, 9]:
+        print(RED + suggestions[ind] + RESET)
+    elif ind in [2, 4, 6, 11]:
+        print(GREEN + suggestions[ind] + RESET)
+    elif ind in [1, 10]:
+        print(YELLOW + suggestions[ind] + RESET)
     else:
         print(suggestions[ind])
 
