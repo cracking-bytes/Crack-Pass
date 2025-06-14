@@ -1,5 +1,3 @@
-![GitHub repo size](https://img.shields.io/github/repo-size/cracking-bytes/Crack-Pass)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![GitHub stars](https://img.shields.io/github/stars/cracking-bytes/Crack-Pass?style=social)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![MIT License](https://img.shields.io/github/license/cracking-bytes/Crack-Pass)
-
 
 # Crack Pass
 
