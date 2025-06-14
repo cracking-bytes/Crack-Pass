@@ -22,7 +22,7 @@ CrackPass is a command-line password strength analyzer that evaluates your passw
 Clone the project
 
 ```bash
-  git clone https://github.com/cracking-bytes/CrackPass.git
+  git clone https://github.com/cracking-bytes/Crack-Pass.git
 ```
 
 Go to the project directory
